@@ -5,6 +5,7 @@ from moneypoly.config import STARTING_BALANCE, BOARD_SIZE, GO_SALARY, JAIL_POSIT
 class Player:
     """Represents a single player in a MoneyPoly game."""
 
+    is_eliminated = False
     def __init__(self, name, balance=STARTING_BALANCE):
         self.name = name
         self.balance = balance
@@ -13,7 +14,6 @@ class Player:
         self.in_jail = False
         self.jail_turns = 0
         self.get_out_of_jail_cards = 0
-        self.is_eliminated = False
 
 
     def add_money(self, amount):

@@ -15,4 +15,4 @@ Iteration 8: removed unnecessary parens after 'not' keyword, used normal print s
 Iteration 9: added newline at last line, module docstring, removed unused `sys` import, removed unused variable `old_position` in `moneypoly/player.py`.
 Iteration 10: added module docstring and class docstring for `PropertyGroup`, removed unnecessary `else` after `return` in `unmortgage` in `moneypoly/property.py`.
 Iteration 11: added module docstring and changed bare `except` to `except ValueError` in `safe_int_input` in `moneypoly/ui.py`.
-
+Iteration 12: changed the `is_eliminated` property to be a class attribute (used to be instance attribute) since it is an immutable data type in `moneypoly/player.py`.
