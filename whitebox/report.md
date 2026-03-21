@@ -11,3 +11,4 @@ Iteration 4: added module docstrings and reformatted long lines in `moneypoly/ca
 Iteration 5: added module docstring in `moneypoly/config.py`.
 Iteration 6: removed unused import of `BOARD_SIZE`, added module docstring, defined `double_streak` attribute in `__init__` for Dice class in `moneypoly/dice.py`.
 Iteration 7: added module docstring, removed unused imports (`os`, `GO_TO_JAIL_POSITION`), fixed unnecessary `elif` after `break`, and added missing final newline in `moneypoly/game.py`.
+Iteration 8: removed unnecessary parens after 'not' keyword, used normal print statement instead of f-string since no interpolated variables in `moneypoly/game.py`.
