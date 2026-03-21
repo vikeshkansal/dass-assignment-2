@@ -17,5 +17,4 @@ Iteration 10: added module docstring and class docstring for `PropertyGroup`, re
 Iteration 11: added module docstring and changed bare `except` to `except ValueError` in `safe_int_input` in `moneypoly/ui.py`.
 Iteration 12: changed the `is_eliminated` property to be a class attribute (used to be instance attribute) since it is an immutable data type in `moneypoly/player.py`.
 Iteration 13: changed `turn_number`, `running`, `current_index`, `board` to be class attributes instead of instance attributes in the `Game` class since there's only ever 1 instance of `Game`, refactored `_apply_card` to fix the too-many-branches warning by using dispatch dictionary by defining helper functions in `moneypoly/game.py`.
-
-
+Iteration 14: changed `is_mortgaged`, `houses` to be a class property from an instance property, changed `mortgage_value` to a property method in the `Property` class, also changed `group` to be read as a keyword argument that is to be passed whenever property is made in `moneypoly/property.py`. Changed `moneypoly/board.py` to accomodate this.
