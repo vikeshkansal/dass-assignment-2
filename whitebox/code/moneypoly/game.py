@@ -1,4 +1,5 @@
 """Game module managing full state and flow of a Moneypoly game session."""
+
 from moneypoly.config import (
     JAIL_FINE,
     AUCTION_MIN_INCREMENT,
@@ -18,14 +19,15 @@ from moneypoly import ui
 class Game:
     """Manages the full state and flow of a MoneyPoly game session."""
 
+    turn_number = 0
+    running = True
+    current_index = 0
+    board = Board()
+
     def __init__(self, player_names):
-        self.board = Board()
         self.bank = Bank()
         self.dice = Dice()
         self.players = [Player(name) for name in player_names]
-        self.current_index = 0
-        self.turn_number = 0
-        self.running = True
         self.chance_deck = CardDeck(CHANCE_CARDS)
         self.community_deck = CardDeck(COMMUNITY_CHEST_CARDS)
 
@@ -290,6 +292,48 @@ class Game:
             print(f"  {player.name} rolled: {self.dice.describe()}")
             self._move_and_resolve(player, roll)
 
+    def _card_collect(self, player, value):
+        """Helper to for collect action."""
+        amount = self.bank.pay_out(value)
+        player.add_money(amount)
+
+    def _card_pay(self, player, value):
+        """Helper to for pay action."""
+        player.deduct_money(value)
+        self.bank.collect(value)
+
+    def _card_jail(self, player):
+        player.go_to_jail()
+        print(f"  {player.name} has been sent to Jail!")
+
+    def _card_jail_free(self, player):
+        player.get_out_of_jail_cards += 1
+        print(f"  {player.name} now holds a Get Out of Jail Free card.")
+
+    def _card_move_to(self, player, value):
+        old_pos = player.position
+        player.position = value
+        if value < old_pos:
+            player.add_money(GO_SALARY)
+            print(f"  {player.name} passed Go and collected ${GO_SALARY}.")
+        tile = self.board.get_tile_type(value)
+        if tile == "property":
+            prop = self.board.get_property_at(value)
+            if prop:
+                self._handle_property_tile(player, prop)
+
+    def _card_birthday(self, player, value):
+        for other in self.players:
+            if other != player and other.balance >= value:
+                other.deduct_money(value)
+                player.add_money(value)
+
+    def _card_collect_from_all(self, player, value):
+        for other in self.players:
+            if other != player and other.balance >= value:
+                other.deduct_money(value)
+                player.add_money(value)
+
     def _apply_card(self, player, card):
         """Apply the effect of a drawn Chance or Community Chest card."""
         if card is None:
@@ -298,46 +342,22 @@ class Game:
         action = card["action"]
         value = card["value"]
 
-        if action == "collect":
-            amount = self.bank.pay_out(value)
-            player.add_money(amount)
+        handlers = {
+            "collect": self._card_collect,
+            "pay": self._card_pay,
+            "jail": self._card_jail,
+            "jail_free": self._card_jail_free,
+            "move_to": self._card_move_to,
+            "birthday": self._card_birthday,
+            "collect_from_all": self._card_collect_from_all
+        }
 
-        elif action == "pay":
-            player.deduct_money(value)
-            self.bank.collect(value)
-
-        elif action == "jail":
-            player.go_to_jail()
-            print(f"  {player.name} has been sent to Jail!")
-
-        elif action == "jail_free":
-            player.get_out_of_jail_cards += 1
-            print(f"  {player.name} now holds a Get Out of Jail Free card.")
-
-        elif action == "move_to":
-            old_pos = player.position
-            player.position = value
-            if value < old_pos:
-                player.add_money(GO_SALARY)
-                print(f"  {player.name} passed Go and collected ${GO_SALARY}.")
-            tile = self.board.get_tile_type(value)
-            if tile == "property":
-                prop = self.board.get_property_at(value)
-                if prop:
-                    self._handle_property_tile(player, prop)
-
-        elif action == "birthday":
-            for other in self.players:
-                if other != player and other.balance >= value:
-                    other.deduct_money(value)
-                    player.add_money(value)
-
-        elif action == "collect_from_all":
-            for other in self.players:
-                if other != player and other.balance >= value:
-                    other.deduct_money(value)
-                    player.add_money(value)
-
+        handler = handlers.get(action)
+        if handler:
+            if action in ("jail", "jail_free"):
+                handler(player)
+            else:
+                handler(player, value)
 
     def _check_bankruptcy(self, player):
         """Eliminate `player` from the game if they are bankrupt."""
