@@ -13,3 +13,5 @@ Iteration 6: removed unused import of `BOARD_SIZE`, added module docstring, defi
 Iteration 7: added module docstring, removed unused imports (`os`, `GO_TO_JAIL_POSITION`), fixed unnecessary `elif` after `break`, and added missing final newline in `moneypoly/game.py`.
 Iteration 8: removed unnecessary parens after 'not' keyword, used normal print statement instead of f-string since no interpolated variables in `moneypoly/game.py`.
 Iteration 9: added newline at last line, module docstring, removed unused `sys` import, removed unused variable `old_position` in `moneypoly/player.py`.
+Iteration 10: added module docstring and class docstring for `PropertyGroup`, removed unnecessary `else` after `return` in `unmortgage` in `moneypoly/property.py`.
+
