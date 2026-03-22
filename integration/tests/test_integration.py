@@ -70,19 +70,20 @@ def test_crew_assign_unregistered_raises():
 # test 3
 
 def test_re_registration_does_not_update_crew():
-    """Test that re-registering a member updates their crew role as well."""
-    
+    """Test that re-registering a member raises and does not change their crew role."""
+
     m = make_all()
     reg = m["registration"]
     crew = m["crew"]
-    
+
     reg.register("Charlie", "mechanic")
     crew.assign_role("Charlie", 7)
     assert crew.get_role("Charlie") == "mechanic"
-    
-    # re-register
-    reg.register("Charlie", "driver")
-    assert crew.get_role("Charlie") == "driver"
+
+    # re-register should raise
+    with pytest.raises(ValueError):
+        reg.register("Charlie", "driver")
+    assert crew.get_role("Charlie") == "mechanic"
 
 # test 4
 

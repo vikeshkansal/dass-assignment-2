@@ -15,6 +15,8 @@ class Registration:
         if role not in VALID_ROLES:
             valid = ', '.join(sorted(VALID_ROLES))
             raise ValueError(f"Invalid role '{role}'. Must be one of: {valid}")
+        if name in self.members:
+            raise ValueError(f"'{name}' is already registered")
         self.members[name] = role
 
     def is_registered(self, name):

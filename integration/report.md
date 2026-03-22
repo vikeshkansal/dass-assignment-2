@@ -17,9 +17,10 @@ Modules: Registration, Crew
 Why: Unregistered members must not enter crew.
 
 **3. `test_re_registration_does_not_update_crew`**
-Register Alice as driver, assign to crew, re-register as mechanic. `crew.get_role("Alice")` should return `"mechanic"`.
+Originally, register Alice as driver, assign to crew, re-register as mechanic. `crew.get_role("Alice")` should return `"mechanic"`.
+However, this was later changed so that registrations can't change roles which makes more sense.
 Modules: Registration, Crew
-Why: Crew should update based on their actual role.
+Why: You should not be able to re-register.
 
 
 **4. `test_only_drivers_can_enter_race`**
@@ -99,4 +100,6 @@ Why: Touches every module and fully verifies that everything works.
 
 #### Errors & Fixes
 
-I failed test cases 3 and 6.
+I failed test cases 3 and 6:
+
+- Test case 3 was fixed by re-evaluating the test case. You shouldn't be able to re-register.
