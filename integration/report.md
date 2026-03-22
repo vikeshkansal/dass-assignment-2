@@ -103,3 +103,5 @@ Why: Touches every module and fully verifies that everything works.
 I failed test cases 3 and 6:
 
 - Test case 3 was fixed by re-evaluating the test case. You shouldn't be able to re-register.
+
+- Test case 6 was fixed by checking if the car is already in an entry

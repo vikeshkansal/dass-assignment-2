@@ -30,6 +30,8 @@ class Race:
         entries = self.races[race_id]["entries"]
         if any(e["driver"] == driver for e in entries):
             raise ValueError(f"{driver} is already entered in race {race_id}")
+        if any(e["car"] == car for e in entries):
+            raise ValueError(f"Car '{car}' is already entered in race {race_id}")
         entries.append({"driver": driver, "car": car})
 
     def list_races(self):
