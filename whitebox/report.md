@@ -144,3 +144,7 @@ Iteration 15: added function and module docstrings to `main.py`.
 - **Passed:** 61
 - **Failed:** 27
 - **Total:** 88
+
+### Fixes
+
+Error 1: Added early return in `Bank.collect()` if amount negative.
