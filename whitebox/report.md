@@ -150,4 +150,4 @@ Iteration 15: added function and module docstrings to `main.py`.
 Error 1: Added early return in `Bank.collect()` if amount negative.
 Error 2: Added `self._funds -= amount` in `Bank.give_loan()` to deduct from bank funds.
 Error 3: Added insufficient funds check in `Bank.give_loan()` raising ValueError.
-Error 4: Added `random.shuffle(self.cards)` in `CardDeck.__init__()` to shuffle on initialization.
+Error 4: Added `random.shuffle(self.cards)` in `CardDeck.__init__()` to shuffle on initialization; added `shuffle=False` parameter and used it in ordered-list tests.

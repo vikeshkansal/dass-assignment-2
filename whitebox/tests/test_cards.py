@@ -11,7 +11,7 @@ def test_draw_empty():
 def test_draw_wraps():
     """draw() past end wraps back to first card."""
     cards = [{"a": 1}, {"a": 2}]
-    deck = CardDeck(cards)
+    deck = CardDeck(cards, shuffle=False)
     deck.draw()  # card 0
     deck.draw()  # card 1
     third = deck.draw()  # wraps to card 0
@@ -21,7 +21,7 @@ def test_draw_wraps():
 def test_cards_remaining():
     """cards_remaining() decrements after a draw."""
     cards = [{"a": 1}, {"a": 2}, {"a": 3}]
-    deck = CardDeck(cards)
+    deck = CardDeck(cards, shuffle=False)
     assert deck.cards_remaining() == 3
     deck.draw()
     assert deck.cards_remaining() == 2

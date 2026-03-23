@@ -44,10 +44,11 @@ COMMUNITY_CHEST_CARDS = [
 class CardDeck:
     """Represents an ordered deck of Chance or Community Chest cards."""
 
-    def __init__(self, cards):
+    def __init__(self, cards, shuffle=True):
         self.cards = list(cards)
         self.index = 0
-        random.shuffle(self.cards)
+        if shuffle and self.cards:
+            random.shuffle(self.cards)
 
     def draw(self):
         """
