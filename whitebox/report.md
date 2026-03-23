@@ -4,20 +4,20 @@
 
 ### Fixes
 
-Iteration 1: Fixed import errors by adding a `__init__.py` to the `moneypoly` directory.
-Iteration 2: added docstrings and removed unused import from `moneypoly/bank.py`.
-Iteration 3: added module docstring and changed '==' based comparison to simply 'is' comparison in `moneypoly/board.py`.
-Iteration 4: added module docstrings and reformatted long lines in `moneypoly/cards.py`.
-Iteration 5: added module docstring in `moneypoly/config.py`.
-Iteration 6: removed unused import of `BOARD_SIZE`, added module docstring, defined `double_streak` attribute in `__init__` for Dice class in `moneypoly/dice.py`.
-Iteration 7: added module docstring, removed unused imports (`os`, `GO_TO_JAIL_POSITION`), fixed unnecessary `elif` after `break`, and added missing final newline in `moneypoly/game.py`.
-Iteration 8: removed unnecessary parens after 'not' keyword, used normal print statement instead of f-string since no interpolated variables in `moneypoly/game.py`.
-Iteration 9: added newline at last line, module docstring, removed unused `sys` import, removed unused variable `old_position` in `moneypoly/player.py`.
-Iteration 10: added module docstring and class docstring for `PropertyGroup`, removed unnecessary `else` after `return` in `unmortgage` in `moneypoly/property.py`.
-Iteration 11: added module docstring and changed bare `except` to `except ValueError` in `safe_int_input` in `moneypoly/ui.py`.
-Iteration 12: changed the `is_eliminated` property to be a class attribute (used to be instance attribute) since it is an immutable data type in `moneypoly/player.py`.
-Iteration 13: changed `turn_number`, `running`, `current_index`, `board` to be class attributes instead of instance attributes in the `Game` class since there's only ever 1 instance of `Game`, refactored `_apply_card` to fix the too-many-branches warning by using dispatch dictionary by defining helper functions in `moneypoly/game.py`.
-Iteration 14: changed `is_mortgaged`, `houses` to be a class property from an instance property, changed `mortgage_value` to a property method in the `Property` class, also changed `group` to be read as a keyword argument that is to be passed whenever property is made in `moneypoly/property.py`. Changed `moneypoly/board.py` to accomodate this.
+Iteration 1: Fixed import errors by adding a `__init__.py` to the `moneypoly` directory.\
+Iteration 2: added docstrings and removed unused import from `moneypoly/bank.py`.\
+Iteration 3: added module docstring and changed '==' based comparison to simply 'is' comparison in `moneypoly/board.py`.\
+Iteration 4: added module docstrings and reformatted long lines in `moneypoly/cards.py`.\
+Iteration 5: added module docstring in `moneypoly/config.py`.\
+Iteration 6: removed unused import of `BOARD_SIZE`, added module docstring, defined `double_streak` attribute in `__init__` for Dice class in `moneypoly/dice.py`.\
+Iteration 7: added module docstring, removed unused imports (`os`, `GO_TO_JAIL_POSITION`), fixed unnecessary `elif` after `break`, and added missing final newline in `moneypoly/game.py`.\
+Iteration 8: removed unnecessary parens after 'not' keyword, used normal print statement instead of f-string since no interpolated variables in `moneypoly/game.py`.\
+Iteration 9: added newline at last line, module docstring, removed unused `sys` import, removed unused variable `old_position` in `moneypoly/player.py`.\
+Iteration 10: added module docstring and class docstring for `PropertyGroup`, removed unnecessary `else` after `return` in `unmortgage` in `moneypoly/property.py`.\
+Iteration 11: added module docstring and changed bare `except` to `except ValueError` in `safe_int_input` in `moneypoly/ui.py`.\
+Iteration 12: changed the `is_eliminated` property to be a class attribute (used to be instance attribute) since it is an immutable data type in `moneypoly/player.py`.\
+Iteration 13: changed `turn_number`, `running`, `current_index`, `board` to be class attributes instead of instance attributes in the `Game` class since there's only ever 1 instance of `Game`, refactored `_apply_card` to fix the too-many-branches warning by using dispatch dictionary by defining helper functions in `moneypoly/game.py`.\
+Iteration 14: changed `is_mortgaged`, `houses` to be a class property from an instance property, changed `mortgage_value` to a property method in the `Property` class, also changed `group` to be read as a keyword argument that is to be passed whenever property is made in `moneypoly/property.py`. Changed `moneypoly/board.py` to accomodate this.\
 Iteration 15: added function and module docstrings to `main.py`.
 
 ## Part 1.3
@@ -147,27 +147,27 @@ Iteration 15: added function and module docstrings to `main.py`.
 
 ### Fixes
 
-Error 1: Added early return in `Bank.collect()` if amount negative.
-Error 2: Added `self._funds -= amount` in `Bank.give_loan()` to deduct from bank funds.
-Error 3: Added insufficient funds check in `Bank.give_loan()` raising ValueError.
-Error 4: Added `random.shuffle(self.cards)` in `CardDeck.__init__()` to shuffle on initialization; added `shuffle=False` parameter and used it in ordered-list tests.
-Error 5: Added reshuffle in `CardDeck.draw()` when the deck wraps aroud, only done when`self._shuffle` flag is set.
-Error 6: Added early return in `Game.advance_turn()` if players list is empty.
-Error 7: Added `self.interactive_menu(player)` call in `Game.play_turn()` before rolling; updated affected tests to mock `interactive_menu`.
-Error 8: Added `self.dice.doubles_streak = 0` in `Game.advance_turn()` to reset streak between players.
-Error 9: Changed `<=` to `<` in `Game.buy_property()` so equal balance is sufficient to buy.
-Error 10: Added `prop.owner.add_money(rent)` in `Game.pay_rent()` to transfer rent to owner.
-Error 11: Moved balance check before `prop.unmortgage()` in `Game.unmortgage_property()` to prevent clearing mortgage when player can't afford it.
-Error 12: Added `seller.add_money(cash_amount)` in `Game.trade()` to transfer cash to seller.
-Error 13: Added `player.deduct_money(JAIL_FINE)` in `Game._handle_jail_turn()` when player voluntarily pays fine.
-Error 14: Added `_check_bankruptcy()` call after mandatory jail fine in `Game._handle_jail_turn()`.
-Error 15: Added `"railroad"` to tile check in `Game._card_move_to()` so railroad destinations trigger property handling.
-Error 16: Added `_check_bankruptcy(buyer)` in `Game.trade()` after buyer pays.
-Error 17: Added `_check_bankruptcy(highest_bidder)` in `Game.auction_property()` after winner pays.
-Error 18: Added `_check_bankruptcy(other)` in `Game._card_birthday()` after deducting from each player.
-Error 19: Changed `min()` to `max()` in `Game.find_winner()` so that player with max net worth wins.
-Error 20: Added `ValueError` raise to `Game.__init__()` if less than 2 players are passed. 
-Error 21: Added `ValueError` raise to `Game.__init__()` to enforce unique player names.
-Error 22: Added `self.position <= old_position or steps >= BOARD_SIZE` as conditions to add `GO_SALARY` to player's balance in `Player.move()`.
-Error 23: Added sum of each properties price to net worth in `Player.net_worth()`.
+Error 1: Added early return in `Bank.collect()` if amount negative.\
+Error 2: Added `self._funds -= amount` in `Bank.give_loan()` to deduct from bank funds.\
+Error 3: Added insufficient funds check in `Bank.give_loan()` raising ValueError.\
+Error 4: Added `random.shuffle(self.cards)` in `CardDeck.__init__()` to shuffle on initialization; added `shuffle=False` parameter and used it in ordered-list tests.\
+Error 5: Added reshuffle in `CardDeck.draw()` when the deck wraps aroud, only done when`self._shuffle` flag is set.\
+Error 6: Added early return in `Game.advance_turn()` if players list is empty.\
+Error 7: Added `self.interactive_menu(player)` call in `Game.play_turn()` before rolling; updated affected tests to mock `interactive_menu`.\
+Error 8: Added `self.dice.doubles_streak = 0` in `Game.advance_turn()` to reset streak between players.\
+Error 9: Changed `<=` to `<` in `Game.buy_property()` so equal balance is sufficient to buy.\
+Error 10: Added `prop.owner.add_money(rent)` in `Game.pay_rent()` to transfer rent to owner.\
+Error 11: Moved balance check before `prop.unmortgage()` in `Game.unmortgage_property()` to prevent clearing mortgage when player can't afford it.\
+Error 12: Added `seller.add_money(cash_amount)` in `Game.trade()` to transfer cash to seller.\
+Error 13: Added `player.deduct_money(JAIL_FINE)` in `Game._handle_jail_turn()` when player voluntarily pays fine.\
+Error 14: Added `_check_bankruptcy()` call after mandatory jail fine in `Game._handle_jail_turn()`.\
+Error 15: Added `"railroad"` to tile check in `Game._card_move_to()` so railroad destinations trigger property handling.\
+Error 16: Added `_check_bankruptcy(buyer)` in `Game.trade()` after buyer pays.\
+Error 17: Added `_check_bankruptcy(highest_bidder)` in `Game.auction_property()` after winner pays.\
+Error 18: Added `_check_bankruptcy(other)` in `Game._card_birthday()` after deducting from each player.\
+Error 19: Changed `min()` to `max()` in `Game.find_winner()` so that player with max net worth wins.\
+Error 20: Added `ValueError` raise to `Game.__init__()` if less than 2 players are passed.\
+Error 21: Added `ValueError` raise to `Game.__init__()` to enforce unique player names.\
+Error 22: Added `self.position <= old_position or steps >= BOARD_SIZE` as conditions to add `GO_SALARY` to player's balance in `Player.move()`.\
+Error 23: Added sum of each properties price to net worth in `Player.net_worth()`.\
 Error 24: Changed `any` to `all` in `Property.all_owned_by()` to enforce necessity of complete ownership of all properties in the group.
