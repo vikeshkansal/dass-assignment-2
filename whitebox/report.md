@@ -154,3 +154,4 @@ Error 4: Added `random.shuffle(self.cards)` in `CardDeck.__init__()` to shuffle 
 Error 5: Added reshuffle in `CardDeck.draw()` when the deck wraps aroud, only done when`self._shuffle` flag is set.
 Error 6: Added early return in `Game.advance_turn()` if players list is empty.
 Error 7: Added `self.interactive_menu(player)` call in `Game.play_turn()` before rolling; updated affected tests to mock `interactive_menu`.
+Error 8: Added `self.dice.doubles_streak = 0` in `Game.advance_turn()` to reset streak between players.

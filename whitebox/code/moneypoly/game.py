@@ -41,6 +41,7 @@ class Game:
             return
         self.current_index = (self.current_index + 1) % len(self.players)
         self.turn_number += 1
+        self.dice.doubles_streak = 0
 
     def play_turn(self):
         """Execute one complete turn for the current player."""
