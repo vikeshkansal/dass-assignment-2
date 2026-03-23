@@ -37,6 +37,8 @@ class Game:
 
     def advance_turn(self):
         """Move to the next player in the rotation."""
+        if not self.players:
+            return
         self.current_index = (self.current_index + 1) % len(self.players)
         self.turn_number += 1
 
