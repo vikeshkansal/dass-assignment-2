@@ -160,3 +160,4 @@ Error 10: Added `prop.owner.add_money(rent)` in `Game.pay_rent()` to transfer re
 Error 11: Moved balance check before `prop.unmortgage()` in `Game.unmortgage_property()` to prevent clearing mortgage when player can't afford it.
 Error 12: Added `seller.add_money(cash_amount)` in `Game.trade()` to transfer cash to seller.
 Error 13: Added `player.deduct_money(JAIL_FINE)` in `Game._handle_jail_turn()` when player voluntarily pays fine.
+Error 14: Added `_check_bankruptcy()` call after mandatory jail fine in `Game._handle_jail_turn()`.

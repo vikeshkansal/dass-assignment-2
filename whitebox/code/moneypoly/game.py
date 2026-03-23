@@ -296,6 +296,9 @@ class Game:
             self.bank.collect(JAIL_FINE)
             player.in_jail = False
             player.jail_turns = 0
+            self._check_bankruptcy(player)
+            if player.is_eliminated:
+                return
             roll = self.dice.roll()
             print(f"  {player.name} rolled: {self.dice.describe()}")
             self._move_and_resolve(player, roll)
