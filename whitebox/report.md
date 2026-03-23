@@ -170,4 +170,4 @@ Error 20: Added `ValueError` raise to `Game.__init__()` if less than 2 players a
 Error 21: Added `ValueError` raise to `Game.__init__()` to enforce unique player names.
 Error 22: Added `self.position <= old_position or steps >= BOARD_SIZE` as conditions to add `GO_SALARY` to player's balance in `Player.move()`.
 Error 23: Added sum of each properties price to net worth in `Player.net_worth()`.
-
+Error 24: Changed `any` to `all` in `Property.all_owned_by()` to enforce necessity of complete ownership of all properties in the group.
