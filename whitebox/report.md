@@ -165,3 +165,4 @@ Error 15: Added `"railroad"` to tile check in `Game._card_move_to()` so railroad
 Error 16: Added `_check_bankruptcy(buyer)` in `Game.trade()` after buyer pays.
 Error 17: Added `_check_bankruptcy(highest_bidder)` in `Game.auction_property()` after winner pays.
 Error 18: Added `_check_bankruptcy(other)` in `Game._card_birthday()` after deducting from each player.
+Error 19: Changed `min()` to `max()` in `Game.find_winner()` so that player with max net worth wins.
