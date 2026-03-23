@@ -25,6 +25,8 @@ class Game:
     board = Board()
 
     def __init__(self, player_names):
+        if len(player_names) < 2:
+            raise ValueError("At least 2 players are required to start the game.")
         self.bank = Bank()
         self.dice = Dice()
         self.players = [Player(name) for name in player_names]
