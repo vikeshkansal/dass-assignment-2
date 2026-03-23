@@ -148,3 +148,4 @@ Iteration 15: added function and module docstrings to `main.py`.
 ### Fixes
 
 Error 1: Added early return in `Bank.collect()` if amount negative.
+Error 2: Added `self._funds -= amount` in `Bank.give_loan()` to deduct from bank funds.
