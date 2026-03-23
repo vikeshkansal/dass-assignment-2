@@ -81,7 +81,7 @@ Iteration 15: added function and module docstrings to `main.py`.
 #### test_board.py
 
 1. `test_get_property_at` - Returns correct property or None for non-property positions
-2. `test_get_tile_type_special` - Special tiles return correct type strings **[FAIL]**
+2. `test_get_tile_type_special` - Special tiles return correct type strings
 3. `test_get_tile_type_property` - Property position returns "property"
 4. `test_get_tile_type_blank` - Unmodelled position returns "blank"
 5. `test_is_purchasable_and_is_special` - Unowned property is purchasable, owned is not, Go is special
@@ -141,8 +141,8 @@ Iteration 15: added function and module docstrings to `main.py`.
 
 ### Summary
 
-- **Passed:** 61
-- **Failed:** 27
+- **Passed:** 62
+- **Failed:** 26
 - **Total:** 88
 
 ### Fixes

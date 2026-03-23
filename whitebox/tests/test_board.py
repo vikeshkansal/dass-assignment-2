@@ -17,7 +17,7 @@ def test_get_tile_type_special():
     assert board.get_tile_type(7) == "chance"
     assert board.get_tile_type(10) == "jail"
     assert board.get_tile_type(30) == "go_to_jail"
-    assert board.get_tile_type(15) == "railload"
+    assert board.get_tile_type(15) == "railroad"
 
 
 def test_get_tile_type_property():
