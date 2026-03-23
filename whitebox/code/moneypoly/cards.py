@@ -47,6 +47,7 @@ class CardDeck:
     def __init__(self, cards, shuffle=True):
         self.cards = list(cards)
         self.index = 0
+        self._shuffle = shuffle
         if shuffle and self.cards:
             random.shuffle(self.cards)
 
@@ -57,6 +58,8 @@ class CardDeck:
         """
         if not self.cards:
             return None
+        if self._shuffle and self.index > 0 and self.index % len(self.cards) == 0:
+            random.shuffle(self.cards)
         card = self.cards[self.index % len(self.cards)]
         self.index += 1
         return card
