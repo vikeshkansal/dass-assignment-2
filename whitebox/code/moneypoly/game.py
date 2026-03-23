@@ -220,6 +220,7 @@ class Game:
             f"  Trade complete: {seller.name} sold {prop.name} "
             f"to {buyer.name} for ${cash_amount}."
         )
+        self._check_bankruptcy(buyer)
         return True
 
     def auction_property(self, prop):
