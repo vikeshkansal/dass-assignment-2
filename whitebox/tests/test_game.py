@@ -38,7 +38,8 @@ def test_play_turn_three_doubles_jail():
     alice = game.players[0]
     game.dice.doubles_streak = 2  # two prior doubles
 
-    with patch('random.randint', return_value=3):  # doubles again
+    with patch('random.randint', return_value=3), \
+         patch.object(game, 'interactive_menu'):
         game.play_turn()
 
     assert alice.in_jail is True
@@ -51,7 +52,8 @@ def test_play_turn_doubles_extra_turn():
     game.current_index = 0
 
     with patch('random.randint', return_value=3), \
-         patch.object(game, '_move_and_resolve'):
+         patch.object(game, '_move_and_resolve'), \
+         patch.object(game, 'interactive_menu'):
         game.play_turn()
 
     assert game.current_index == 0
@@ -63,7 +65,8 @@ def test_play_turn_normal():
     game.current_index = 0
 
     with patch('random.randint', side_effect=[2, 3]), \
-         patch.object(game, '_move_and_resolve'):
+         patch.object(game, '_move_and_resolve'), \
+         patch.object(game, 'interactive_menu'):
         game.play_turn()
 
     assert game.current_index == 1
@@ -89,7 +92,8 @@ def test_doubles_streak_bleeds():
     bob = game.players[1]
 
     with patch('random.randint', return_value=3), \
-         patch.object(game, '_move_and_resolve'):
+         patch.object(game, '_move_and_resolve'), \
+         patch.object(game, 'interactive_menu'):
 
         game.play_turn()
         assert game.dice.doubles_streak == 1
