@@ -336,10 +336,11 @@ class Game:
                 self._handle_property_tile(player, prop)
 
     def _card_birthday(self, player, value):
-        for other in self.players:
+        for other in list(self.players):
             if other != player and other.balance >= value:
                 other.deduct_money(value)
                 player.add_money(value)
+                self._check_bankruptcy(other)
 
     def _card_collect_from_all(self, player, value):
         for other in self.players:
