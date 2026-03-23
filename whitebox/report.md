@@ -158,3 +158,4 @@ Error 8: Added `self.dice.doubles_streak = 0` in `Game.advance_turn()` to reset 
 Error 9: Changed `<=` to `<` in `Game.buy_property()` so equal balance is sufficient to buy.
 Error 10: Added `prop.owner.add_money(rent)` in `Game.pay_rent()` to transfer rent to owner.
 Error 11: Moved balance check before `prop.unmortgage()` in `Game.unmortgage_property()` to prevent clearing mortgage when player can't afford it.
+Error 12: Added `seller.add_money(cash_amount)` in `Game.trade()` to transfer cash to seller.
