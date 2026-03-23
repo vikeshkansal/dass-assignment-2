@@ -163,3 +163,4 @@ Error 13: Added `player.deduct_money(JAIL_FINE)` in `Game._handle_jail_turn()` w
 Error 14: Added `_check_bankruptcy()` call after mandatory jail fine in `Game._handle_jail_turn()`.
 Error 15: Added `"railroad"` to tile check in `Game._card_move_to()` so railroad destinations trigger property handling.
 Error 16: Added `_check_bankruptcy(buyer)` in `Game.trade()` after buyer pays.
+Error 17: Added `_check_bankruptcy(highest_bidder)` in `Game.auction_property()` after winner pays.

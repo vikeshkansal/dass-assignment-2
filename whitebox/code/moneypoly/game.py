@@ -256,6 +256,7 @@ class Game:
                 f"  {highest_bidder.name} won {prop.name} "
                 f"at auction for ${highest_bid}."
             )
+            self._check_bankruptcy(highest_bidder)
         else:
             print(f"  No bids placed. {prop.name} remains unowned.")
 
