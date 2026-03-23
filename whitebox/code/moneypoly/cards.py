@@ -47,6 +47,7 @@ class CardDeck:
     def __init__(self, cards):
         self.cards = list(cards)
         self.index = 0
+        random.shuffle(self.cards)
 
     def draw(self):
         """
