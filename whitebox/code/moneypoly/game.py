@@ -27,6 +27,8 @@ class Game:
     def __init__(self, player_names):
         if len(player_names) < 2:
             raise ValueError("At least 2 players are required to start the game.")
+        if len(player_names) != len(set(player_names)):
+            raise ValueError("Player names must be unique.")
         self.bank = Bank()
         self.dice = Dice()
         self.players = [Player(name) for name in player_names]

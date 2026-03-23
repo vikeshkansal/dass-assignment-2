@@ -167,3 +167,4 @@ Error 17: Added `_check_bankruptcy(highest_bidder)` in `Game.auction_property()`
 Error 18: Added `_check_bankruptcy(other)` in `Game._card_birthday()` after deducting from each player.
 Error 19: Changed `min()` to `max()` in `Game.find_winner()` so that player with max net worth wins.
 Error 20: Added `ValueError` raise to `Game.__init__()` if less than 2 players are passed. 
+Error 21: Added `ValueError` raise to `Game.__init__()` to enforce unique player names.
